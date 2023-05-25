@@ -3,37 +3,25 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        double num1, num2;
+        String operador;
 
         System.out.print("Digíte o primeiro número: ");
-        double num1 = scanner.nextDouble();
+        num1 = scanner.nextDouble();
 
         System.out.print("Digíte o segundo número: ");
-        double num2 = scanner.nextDouble();
+        num2 = scanner.nextDouble();
 
 
         System.out.print("Digite a operação (+, -, *, /): ");
-        char operation = scanner.next().charAt(0);
+        operador = scanner.next();
 
-        double result = 0;
+        char operadorChar = operador.charAt(0);
 
-        switch (operation) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                result = num1 / num2;
-                break;
-            default:
-                System.out.println("Operação invalida.");
-                return;
-        }
-        System.out.println("O resultado é: " + result);
+        Operacao operacao = new Operacao(num1, num2, operadorChar);
+        double resultado = operacao.calcular();
+
+        System.out.println("O resultado é: " + resultado);
 
     }
 }
